@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>C++ Practice</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>C++ Lessons</h2>
+    <ul>
+      <li><a href="#" onclick="loadSnippet('variables')">Variables</a></li>
+      <li><a href="#" onclick="loadSnippet('loops')">Loops</a></li>
+      <li><a href="#" onclick="loadSnippet('strings')">Strings</a></li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <h1>Practice: C++</h1>
+    <pre id="code"></pre>
+    <textarea id="input" placeholder="Start typing here..."></textarea>
+    <br>
+    <button id="submit-btn">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    const snippets = {
+  variables: `#include<stdio.h>\nint main(){\n char chaiType[]="Masala";\n int price=25;\n int isHot=1;\n printf("%s %d %d",chaiType,price,isHot);\n return 0;\n}`,
+  loops: `#include<stdio.h>\nint main(){\n int num=1234,sum=0;\n while(num>0){ sum+=num%10; num/=10; }\n printf("Sum: %d",sum);\n return 0;\n}`,
+  strings: `#include<stdio.h>\n#include<string.h>\nint main(){\n char name[]="Divyanshu";\n printf("Length: %lu",strlen(name));\n return 0;\n}`,
+  arrays: `#include<stdio.h>\nint main(){\n int arr[5]={10,25,7,98,45};\n int max=arr[0];\n for(int i=1;i<5;i++) if(arr[i]>max) max=arr[i];\n printf("Max: %d",max);\n return 0;\n}`,
+  functions: `int add(int a,int b){ return a+b; }\nint main(){\n printf("%d",add(5,7));\n return 0;\n}`
+};
+    function loadSnippet(topic) {
+      document.getElementById("code").innerText = snippets[topic];
+      document.getElementById("input").value = "";
+      document.getElementById("result").innerText = "";
+    }
+
+    window.onload = () => loadSnippet('variables');
+  </script>
+</body>
+</html>
